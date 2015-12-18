@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Stock Price Forecast</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Stock Price Forecast">
+  <meta name="author" content="luxiaoguang_leon@hotmail.com">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>Stock Price Forecast</h1>
+    <h2>Developing Data Products project</h2>
+    <p>luxiaoguang_leon@hotmail.com<br/>Data Science</p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h2>Introduction</h2>
+  </hgroup>
+  <article data-timings="">
+    <ol>
+<li>Forecasting has fascinated people for thousands of years. People never stop studying on stock price movement after the first stock was born in 1600 years in British. </li>
+<li>What can R do on stock price forecasting? In this project we will use <code>quantmod</code> package and <code>forecast</code> package in R to study the stock price movement and forecast the future price trend.<br></li>
+<li>We have to say, forecasting on stock price movement is not easy. There are too many factors that contribute to the price. We will never understand all of them although there is plenty of available data. And the forecast itself will affect the price. This makes the farecast even harder.<br></li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-2" style="background:;">
+  <hgroup>
+    <h2>Data Source</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>We will get free data from yahoo finance.<br>
+E.g.in this weblink (<a href="http://finance.yahoo.com/q?s=%5Egspc">S&amp;P 500 index</a>) we will see S&amp;P 500 index price movement.<br>
+Remember the short code which is \(^GSPC\). Put it into the stock code frame and click submit. This App will download 10 years <code>OHLC</code> data. The data type is <code>xts</code>.<br>
+Here is more examples for short code and index:  </p>
+
+<p>Dow Jones Industrial Average \(^DJI\)<br>
+S&amp;P 500 \(^GSPC\)<br>
+NASDAQ Composite \(^IXIC\)<br>
+Apple Inc. \(AAPL\)  </p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-3" style="background:;">
+  <hgroup>
+    <h2>Forecast</h2>
+  </hgroup>
+  <article data-timings="">
+    <ol>
+<li>The first interactive plot shows the close price curves with a close price moving average curve in another color. </li>
+<li>The second interactive plot shows the seasonal curve. It shows the price fluctuated by seasonal reason. This is extracted from <code>decompose</code> function. See <code>help(decompose)</code>. </li>
+<li>Now let&#39;s forecast. See interactive plot three. We set a model using ets(Exponential smoothing state space model) with model type MMM. see <code>help(ets)</code>. You will see a curve in blue which is the close price curve. After the blue curve there are five forecast curves. In the middle which is normal forecast curve. There are two curves above it which are positive forecast and extremely positive and two curves below it which are negetive forecast and extremely negetive.<br></li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-4" style="background:;">
+  <hgroup>
+    <h2>Action and stop loss</h2>
+  </hgroup>
+  <article data-timings="">
+    <ol>
+<li>Long term moving average curve shows the trend. Buy a stock or index with an up going trend is a good strategy. Sell it when trend goes down. When close price curve go down and cross the moving average curve, sell it. When close price curve go up and cross the moving average curve, buy it.</li>
+<li>Buy a stock or index when it reaches the seasonal bottom price point. Sell a when it reaches the seasonal top point. </li>
+<li>Use the positive forecast curve when price kept going down for a long time. Use the negetive forecast curve when price kept going up for a long time. Use the normal forecast curve when price is flat. </li>
+<li>Like what was mentioned at the beginning, it is almost impossible to forecast a stock or index price highly accurately. Actually forecasting is only a small part on stock investment strategy system. A stop loss strategy has to be included into the system.<br></li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='Introduction'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='Data Source'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='Forecast'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Action and stop loss'>
+         4
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>
