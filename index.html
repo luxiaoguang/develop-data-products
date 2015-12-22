@@ -62,14 +62,24 @@
   </hgroup>
   <article data-timings="">
     <p>We will get free data from yahoo finance.<br>
-E.g.in this weblink (<a href="http://finance.yahoo.com/q?s=%5Egspc">S&amp;P 500 index</a>) we will see S&amp;P 500 index price movement.<br>
-Remember the short code which is \(^GSPC\). Put it into the stock code frame and click submit. This App will download 10 years <code>OHLC</code> data. The data type is <code>xts</code>.<br>
-Here is more examples for short code and index:  </p>
+E.g. (<a href="http://finance.yahoo.com/q?s=%5Egspc">S&amp;P 500 index</a>).<br>
+This App will download 10 years <code>OHLC</code> data. And we will use monthly data.     </p>
 
-<p>Dow Jones Industrial Average \(^DJI\)<br>
-S&amp;P 500 \(^GSPC\)<br>
-NASDAQ Composite \(^IXIC\)<br>
-Apple Inc. \(AAPL\)  </p>
+<pre><code>##            GSPC.Open GSPC.High GSPC.Low GSPC.Close GSPC.Volume
+## 2015-07-31   2111.60   2114.24  2102.07    2103.84  3681340000
+## 2015-08-31   1986.73   1986.73  1965.98    1972.18  3915100000
+## 2015-09-30   1887.14   1920.53  1887.14    1920.03  4525070000
+## 2015-10-30   2090.00   2094.32  2079.34    2079.36  4256200000
+## 2015-11-30   2090.95   2093.81  2080.41    2080.41  4245030000
+## 2015-12-21   2010.27   2022.90  2005.93    2021.15  3760280000
+##            GSPC.Adjusted
+## 2015-07-31       2103.84
+## 2015-08-31       1972.18
+## 2015-09-30       1920.03
+## 2015-10-30       2079.36
+## 2015-11-30       2080.41
+## 2015-12-21       2021.15
+</code></pre>
 
   </article>
   <!-- Presenter Notes -->
@@ -80,11 +90,10 @@ Apple Inc. \(AAPL\)  </p>
     <h2>Forecast</h2>
   </hgroup>
   <article data-timings="">
-    <ol>
-<li>The first interactive plot shows the close price curves with a close price moving average curve in another color. </li>
-<li>The second interactive plot shows the seasonal curve. It shows the price fluctuated by seasonal reason. This is extracted from <code>decompose</code> function. See <code>help(decompose)</code>. </li>
-<li>Now let&#39;s forecast. See interactive plot three. We set a model using ets(Exponential smoothing state space model) with model type MMM. see <code>help(ets)</code>. You will see a curve in blue which is the close price curve. After the blue curve there are five forecast curves. In the middle which is normal forecast curve. There are two curves above it which are positive forecast and extremely positive and two curves below it which are negetive forecast and extremely negetive.<br></li>
-</ol>
+    <p>We will use three interactive plots to forecast stock future prices.<br>
+1. The first interactive plot shows the close price curves with a close price moving average curve in another color.<br>
+2. The second interactive plot shows the seasonal fluctuation. It shows the price fluctuated by seasonal reason. This is extracted from <code>decompose</code> function. See <code>help(decompose)</code>.<br>
+3. Now let&#39;s forecast. See interactive plot three. We set a model using ets(Exponential smoothing state space model) with model type MMM. see <code>help(ets)</code>. You will see a curve in blue which is the close price curve. After the blue curve there are five forecast curves. In the middle which is normal forecast curve. There are two curves above it which are positive forecast and extremely positive and two curves below it which are negetive forecast and extremely negetive.       </p>
 
   </article>
   <!-- Presenter Notes -->

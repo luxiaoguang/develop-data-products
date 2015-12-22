@@ -22,21 +22,29 @@ knit        : slidify::knit2slides
 ## Data Source
 
 We will get free data from yahoo finance.   
-E.g.in this weblink ([S&P 500 index](http://finance.yahoo.com/q?s=^gspc)) we will see S&P 500 index price movement.   
-Remember the short code which is $^GSPC$. Put it into the stock code frame and click submit. This App will download 10 years `OHLC` data. The data type is `xts`.     
-Here is more examples for short code and index:  
-
-Dow Jones Industrial Average $^DJI$  
-S&P 500 $^GSPC$  
-NASDAQ Composite $^IXIC$  
-Apple Inc. $AAPL$  
+E.g. ([S&P 500 index](http://finance.yahoo.com/q?s=^gspc)).   
+This App will download 10 years `OHLC` data. And we will use monthly data.     
+```{r,echo=FALSE,message=FALSE,error=FALSE,warning=FALSE,results='hide'}
+library(quantmod)
+library(lubridate)
+to.dat <- Sys.Date()
+from.dat <- as.Date(paste(year(to.dat)-10,month(to.dat),day(to.dat),sep="-"))
+setSymbolLookup(share.index=list(name="^GSPC",src="yahoo"))
+getSymbols("share.index",from = from.dat, to = to.dat)
+```
+```{r,echo=FALSE,message=FALSE,error=FALSE,warning=FALSE}
+# use monthly data
+stock.monthly <- SHARE.INDEX[endpoints(SHARE.INDEX, on ="months")]
+tail(stock.monthly)
+```
 
 ---
 ## Forecast
 
-1. The first interactive plot shows the close price curves with a close price moving average curve in another color. 
-2. The second interactive plot shows the seasonal curve. It shows the price fluctuated by seasonal reason. This is extracted from `decompose` function. See `help(decompose)`. 
-3. Now let's forecast. See interactive plot three. We set a model using ets(Exponential smoothing state space model) with model type MMM. see `help(ets)`. You will see a curve in blue which is the close price curve. After the blue curve there are five forecast curves. In the middle which is normal forecast curve. There are two curves above it which are positive forecast and extremely positive and two curves below it which are negetive forecast and extremely negetive.    
+We will use three interactive plots to forecast stock future prices.  
+1. The first interactive plot shows the close price curves with a close price moving average curve in another color.   
+2. The second interactive plot shows the seasonal fluctuation. It shows the price fluctuated by seasonal reason. This is extracted from `decompose` function. See `help(decompose)`.  
+3. Now let's forecast. See interactive plot three. We set a model using ets(Exponential smoothing state space model) with model type MMM. see `help(ets)`. You will see a curve in blue which is the close price curve. After the blue curve there are five forecast curves. In the middle which is normal forecast curve. There are two curves above it which are positive forecast and extremely positive and two curves below it which are negetive forecast and extremely negetive.       
     
 
 ---

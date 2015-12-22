@@ -1,0 +1,12 @@
+base
+shinyapps
+zoo
+xts
+TTR
+quantmod
+lubridate
+timeDate
+forecast
+rCharts
+knitr
+slidify
