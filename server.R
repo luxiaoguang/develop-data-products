@@ -1,10 +1,10 @@
 library(shiny)
 library(quantmod)
-library(dplyr)
 library(lubridate)
 library(forecast)
 library(rCharts)
 library(TTR)
+options(RCHART_WIDTH = 600)
 # specify to and from dates
 to.dat <- Sys.Date()
 from.dat <- as.Date(paste(year(to.dat)-10,month(to.dat),day(to.dat),sep="-"))
