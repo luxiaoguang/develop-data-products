@@ -24,11 +24,13 @@ shinyUI(pageWithSidebar(
                 h3('Forecasting Please Wait ...'),
                 h4('Your Stock Code'),
                 verbatimTextOutput("ocode"),
-                h4('1. Close Price with Trend'),
+                h4('1. Close Price with Trend (Trend go down Sell, Trend go up Buy)'),
                 showOutput("chart1", "morris"),
-                h4('2. Seasonal Fluctuation'),
+                h4('2. Seasonal Fluctuation (Seasonal top Sell, Seasonal bottom Buy)'),
                 showOutput("chart2", "morris"),
-                h4('3. Close Price with Forecast Prices'),
+                h4('3. Close Price with Forecast Prices 
+                   (Price go up for a long time, use negetive forecast. 
+                   Price go down for a long time, use positive forecast)'),
                 showOutput("chart3", "morris")
                 
         )
